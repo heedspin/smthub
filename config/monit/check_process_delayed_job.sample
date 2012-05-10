@@ -1,0 +1,27 @@
+############################################################
+# Staging
+
+check process smthub_staging with pidfile /home/tim/Dropbox/p/smthub/tmp/pids/delayed_job.pid
+  start program = "/bin/bash /home/tim/Dropbox/p/smthub/script/monit_delayed_job.sh start"
+    as uid www-data and gid www-data
+  stop program = "/bin/bash  /home/tim/Dropbox/p/smthub/script/monit_delayed_job.sh stop"
+    as uid www-data and gid www-data
+  if cpu > 60% for 2 cycles then alert
+  if cpu > 80% for 5 cycles then restart
+  if totalmem > 200.0 MB for 5 cycles then restart
+  if 3 restarts within 5 cycles then timeout
+  group background_tasks
+
+############################################################
+# Production
+
+check process smthub with pidfile /var/www/smthub/tmp/pids/delayed_job.pid
+  start program = "/bin/bash /var/www/smthub/script/monit_delayed_job.sh start"
+    as uid www-data and gid www-data
+  stop program = "/bin/bash  /var/www/smthub/script/monit_delayed_job.sh stop"
+    as uid www-data and gid www-data
+  if cpu > 60% for 2 cycles then alert
+  if cpu > 80% for 5 cycles then restart
+  if totalmem > 200.0 MB for 5 cycles then restart
+  if 3 restarts within 5 cycles then timeout
+  group background_tasks

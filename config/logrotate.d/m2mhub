@@ -1,0 +1,20 @@
+/home/tim/Dropbox/p/smthub/log/*.log {
+  weekly
+  missingok
+  rotate 10
+  compress
+	copytruncate
+  delaycompress
+  sharedscripts
+}
+
+/var/www/smthub/current/log/*.log {
+  weekly
+  missingok
+  rotate 10
+  compress
+	copytruncate
+  delaycompress
+  sharedscripts
+}
+

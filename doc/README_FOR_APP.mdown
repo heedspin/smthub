@@ -1,0 +1,4 @@
+## Cron hints
+
+# m h  dom mon dow   command
+05 1 * * 2-6 /var/www/smthub/script/runner.sh 'Production::InventoryReport.new.run_in_background!'

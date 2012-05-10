@@ -1,0 +1,6 @@
+log/*
+tmp/*
+config/database.yml*
+config/local_config.yml
+db/schema.rb
+db/backups

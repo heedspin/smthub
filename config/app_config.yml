@@ -1,0 +1,35 @@
+# Override values from m2mhub_config.yml or add application-specific configs.
+app_config:
+  shared: &shared
+    google_analytics_key:
+    email_name: SMT WebBot
+    email_address: smtcoinc@gmail.com
+    email_domain: smtcoinc.com
+    website: www.smtcoinc.com
+    short_name: SMT
+    long_name: SMT, Inc.
+    cost_method: rolled_standard_cost
+    fob_groups:
+      - id: 1
+        default: true
+        name: SMT
+        members:
+          - our plant
+      - id: 2
+        name: Third Party
+        members:
+          - 3rd party
+      - id: 3
+        name: Your Dock
+        members:
+          - your dock
+    logo_image: logo.gif
+    
+  development:
+    <<: *shared
+    hostname: staging.smtcoinc.com
+  production:
+    <<: *shared
+    hostname: m2mhub.smtcoinc.com
+  test:
+    <<: *shared
