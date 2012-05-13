@@ -27,5 +27,11 @@ Smthub::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-end
 
+  if false
+    require 'obfuscator/obfuscator'
+    config.to_prepare do
+      Obfuscator.configure
+    end
+  end
+end
