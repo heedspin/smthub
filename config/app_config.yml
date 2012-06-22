@@ -25,8 +25,8 @@ app_config:
           - your dock
     logo_image: logo.gif
     enable_commission_report: false
-    otd_grace_period_days: 2
-    otd_lead_time: 15
+    otd_grace_period_days: 1
+    otd_lead_time: 0
     
   development:
     <<: *shared
