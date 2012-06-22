@@ -59,6 +59,8 @@ Smthub::Application.routes.draw do
     resources :customer_reports, :only => [:index, :show], :controller => 'production/inventory_reports/customer_reports'
     resources :obsolete_reports, :only => [:index], :controller => 'production/inventory_reports/obsolete_reports'
   end
+  resources :purchase_queue_summaries, :only => [:index, :show], :controller => 'production/purchase_queue_summaries'
+  resources :purchase_queue_notes, :controller => 'production/purchase_queue_notes'
 
   # Specify thing regular expression because the routes use '.' as separator.
   match 'switch/:thing' => 'switch#switch', :thing => /.+/, :as => 'switch'
