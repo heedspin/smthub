@@ -1,7 +1,3 @@
-/* ------------------------------------------
-SMT Inc Website		
----------------------------------------------*/
-
 /* browser reset
 ---------------------------------------------*/
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
@@ -310,10 +306,10 @@ form.formtastic fieldset.inlinebuttons {
 	display: inline;
 }
 
-form.formtastic fieldset.inputs > ol > li {
+form.formtastic fieldset > ol > li {
 	display: block;
 }
-form.formtastic fieldset.inputs > ol > li#quote_request_other_service_input > label {
+form.formtastic fieldset > ol > li#quote_request_other_service_input > label {
 	display: inline;
 	clear: none;
 }
@@ -482,6 +478,16 @@ fieldset.inputs li.boolean label, ol.choices-group li.choice label {
 	padding: 10px;
 }
 .errorExplanation ul { list-style-type:decimal;list-style-position:inside;}
+
+.noticeContainer  { 
+	background-color: #eee;
+	margin: 0 0 15px;
+	padding: 10px;
+	width: auto;
+}
+.noticeContainer ul {
+	margin: 5px 0 0 10px;
+}
 
 
 /* OVERRIDES
@@ -707,6 +713,14 @@ table.data tr.primary-contact {
 	background-color: #efe;
 }
 
+table.data table.data td {
+  border: 1px dotted #ccc;
+  }
+
+table.data table.data th {
+  background: #F7F7F7;
+  }
+
 /* NEWS
 -------------------------------------------------------------------- */
 .post img, .last_post img {
@@ -926,6 +940,13 @@ form.formtastic fieldset.floatyfields > ol > li {
 	display: block;
 	float: none;
 }
+form.formtastic ul.errors  { 
+	border:1px solid red; 
+	outline:1px solid #f7941d;
+	margin: 0 0 15px;
+	padding: 10px 0 10px 20px;
+	font-size: 1.5em;
+}
 
 div.searchresults {
 	margin-top: 5px;
@@ -1069,4 +1090,37 @@ div.display_search {
 span.late {
 	color: #f00;
 	font-weight: bold;
+}
+
+tr.resolved-event {
+	background-color: #dddde5;
+}
+
+/* Purchase Queues 
+------------------------------------------------- */
+.purchase_queue_comment {
+	width: 35%;
+}
+/* in place editing
+---------------------------------------------------- */
+.inplace_link, .inplace_cancel_link{
+	text-decoration:underline;
+	float: right;
+}
+.inplace_form, .inplace_delete_confirmation {
+	display:none;
+}
+.inplace_form textarea {
+	width: 220px;
+	height: 4em;
+}
+.inplace_taunt {
+	text-decoration: italic;
+	color: #aaa;
+}
+
+/* Explanation Station
+-------------------------------------------------------- */
+.explanation {
+	
 }
