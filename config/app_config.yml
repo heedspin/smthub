@@ -27,6 +27,7 @@ app_config:
     enable_commission_report: false
     otd_grace_period_days: 1
     otd_lead_time: 0
+    enable_events: false
     
   development:
     <<: *shared

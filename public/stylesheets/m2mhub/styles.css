@@ -636,7 +636,6 @@ table.data {
   margin: 15px 0 15px 0;
   }
 table.data thead {
-  background: #dcdcdc;
   }
 table.data tr.even {
   background-color: #ededed;
@@ -644,6 +643,7 @@ table.data tr.even {
 table.data th {
   font-size: 12px;
   color: #646870;
+  background: #dcdcdc;
   text-align: left;
   vertical-align: top;
   border: 1px solid #c5c5c5;
@@ -720,6 +720,12 @@ table.data table.data td {
 table.data table.data th {
   background: #F7F7F7;
   }
+table.data tr.master-release {
+	background-color: #efe;
+}
+table.data th.date {
+	width:5em;
+}
 
 /* NEWS
 -------------------------------------------------------------------- */
@@ -1118,9 +1124,8 @@ tr.resolved-event {
 	text-decoration: italic;
 	color: #aaa;
 }
-
-/* Explanation Station
--------------------------------------------------------- */
-.explanation {
-	
+/* Backlog Reports
+------------------------------------------------ */
+.late-release {
+	background-color: #fdd;
 }
