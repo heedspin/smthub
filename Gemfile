@@ -14,7 +14,7 @@ gem 'declarative_authorization', '~> 0.5.5'
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
 else
-  gem 'm2mhub', :git => 'git@github.com:heedspin/m2mhub.git', :branch => 'engine'
+  gem 'm2mhub', :git => 'git@github.com:heedspin/m2mhub.git'
 end
 
 group :development do
