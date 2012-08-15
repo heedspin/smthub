@@ -48,6 +48,9 @@ authorization do
     has_permission_on :quality_rmas, :to => :read
     has_permission_on :invoiced_sales_reports, :to => :manage
     has_permission_on :pro_forma_sales_reports, :to => :manage
+    has_permission_on :sales_reports, :to => :read
+    has_permission_on :bookings_reports, :to => :read
+    has_permission_on :backlog_reports, :to => :read
   end
   
   role :production do
