@@ -62,6 +62,6 @@ module Smthub
   end
 end
 
-require 'logger_utils'
+require 'plutolib/logger_utils'
 require 'app_config'
 require 'application_form_builder'

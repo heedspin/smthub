@@ -10,11 +10,20 @@ gem 'paperclip', '~> 2.7.0'
 gem 'aws-sdk', '~> 1.3.4'
 gem 'acts_as_list', '~> 0.1.6'
 gem 'declarative_authorization', '~> 0.5.5'
+gem 'ruby_parser' # for declarative_authorization
+gem 'nokogiri', '1.5.4' # so it doesn't autoupdate
+gem 'hominid' # for mailchimper in plutolib
   
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
 else
   gem 'm2mhub', :git => 'git@github.com:heedspin/m2mhub.git'
+end
+
+if File.exists?('../plutolib')
+  gem 'plutolib', :path => '../plutolib'
+else
+  gem 'plutolib', :git => 'git@github.com:heedspin/plutolib.git'
 end
 
 group :development do
