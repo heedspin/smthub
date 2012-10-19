@@ -26,6 +26,12 @@ else
   gem 'plutolib', :git => 'git@github.com:heedspin/plutolib.git'
 end
 
+group :database do
+  gem 'mysql', '2.8.1'
+  gem 'tiny_tds', '0.5.1'
+  gem 'activerecord-sqlserver-adapter', '3.1.5' # '3.2.0'
+end
+
 group :development do
   gem 'mongrel'
   gem 'ruby-debug'
