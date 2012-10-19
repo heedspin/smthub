@@ -7,14 +7,14 @@ class FindPlatedParts
   def initialize
     @customer_names = ['Ge Power Electronics, Inc.', 'Lineage Power Installation Service']
     @start_date = Date.current.advance(:years => -1)
-    @output_path = File.join(Rails.root, 'all_plated_parts.csv')
+    @output_path = File.join(Rails.root, 'lineage_plated_parts.csv')
     @plating_subcontractors = M2m::WorkCenter.work_center_ids(%w(SUBPRAL SUBPREC SUBPPSY SUBUMF SUBCRHP SUBINDU SUBHUDG SUBAMP SUBELRI SUBIPC SUBPPC SUBPMPC SUBSTRA SUBWMS)).all
     # @plating_subcontractors = M2m::WorkCenter.name_like(['PLATE', 'PLATING']).all
   end
 
   class ItemSummary
     attr_accessor :item, :ancestories
-    attr_accessor :operation
+    attr_accessor :plating_description
     def initialize(item)
       @item = item
       @ancestories = []
@@ -46,8 +46,7 @@ class FindPlatedParts
 
   def get_exploded_lineage_parts
     customers = M2m::Customer.with_names(@customer_names).all
-    # M2m::SalesOrder.customers(customers).includes(:items).ordered_since(@start_date).each do |so|
-    M2m::SalesOrder.includes(:items).ordered_since(@start_date).each do |so|
+    M2m::SalesOrder.customers(customers).includes(:items).ordered_since(@start_date).each do |so|
       so.items.each do |so_item|
         if add_item(so_item.part_number, so_item.revision, nil)
           for_each_bom_child(so_item.part_number, so_item.revision, [so_item.part_number]) do |parents, child_item|
@@ -61,8 +60,15 @@ class FindPlatedParts
   def determine_if_smt_plated
     self.all_items.values.each do |summary|
       if summary.item
-        M2m::DefaultRouteOperation.item(summary.item).work_centers(@plating_subcontractors).each do |plating_operation|
-          summary.operation = plating_operation
+        item_description = [summary.item.description.strip, summary.item.user_memo.strip, summary.item.standard_memo.strip].select(&:present?).join("\n")
+        if (item_description) =~ /(plated|plate|plating|zinc|yellow|clear|rohs)/mi
+          summary.plating_description = "Item description: #{item_description}"
+        else
+          M2m::DefaultRouteOperation.item(summary.item).work_centers(@plating_subcontractors).each do |plating_operation|
+            subcontractor = plating_operation.work_center.try(:name).try(:strip)
+            description = plating_operation.operation_memo.strip
+            summary.plating_description = "Plated by #{subcontractor}: #{description}"
+          end
         end
       end
     end
@@ -77,7 +83,7 @@ class FindPlatedParts
 
   def export_csv
     CSV.open(@output_path, 'wb') do |csv|
-      csv << ['Parent Parts', 'Part Number', 'Revision', 'Description', 'Item Group', 'SMT Plated?', 'Operation Description', 'Subcontractor']
+      csv << ['Parent Parts', 'Part Number', 'Revision', 'Description', 'Item Group', 'SMT Plated?', 'Plating Description', 'On Hand', 'Committed']
       self.all_items.values.sort_by { |s| [s.item.try(:part_number) || '', s.item.try(:revision) || ''] }.each do |s|
         row = []
         row.push s.ancestories.map { |a| a.join(" => ") }.join("\n")
@@ -85,9 +91,10 @@ class FindPlatedParts
         row.push s.item.try(:revision)
         row.push s.item.try(:description).try(:strip)
         row.push s.item.try(:group_name).try(:strip)
-        row.push s.operation.present? ? 1 : 0
-        row.push s.operation.try(:operation_memo).try(:strip)
-        row.push s.operation.try(:work_center).try(:name).try(:strip)
+        row.push s.plating_description.present? ? 1 : 0
+        row.push s.plating_description
+        row.push s.item.quantity_on_hand
+        row.push s.item.quantity_committed
         csv << row
       end
     end
