@@ -29,6 +29,7 @@ app_config:
     otd_lead_time: 0
     enable_events: false
     enable_opportunities: false
+    feature_inspection_tasks: false
     
   development:
     <<: *shared
