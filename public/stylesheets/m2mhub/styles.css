@@ -706,11 +706,9 @@ table.data td.fixdouble, table.data th.fixdouble {
 table.data td.fixtriple, table.data th.fixtriple {
 	width: 15em;
 }
-
 table.fullsize {
 	width: 100%;
 }
-
 .hoverinfo a:link, .hoverinfo a:visited, .hoverinfo a:hover {
 	text-decoration:none;
 	color: #666;
@@ -718,11 +716,9 @@ table.fullsize {
 table.data tr.primary-contact {
 	background-color: #efe;
 }
-
 table.data table.data td {
   border: 1px dotted #ccc;
   }
-
 table.data table.data th {
   background: #F7F7F7;
   }
@@ -731,6 +727,10 @@ table.data tr.master-release {
 }
 table.data th.date {
 	width:5em;
+}
+table.data tbody tr.spacer td {
+	padding: 0 0 2px;
+	border: none;
 }
 
 /* NEWS
