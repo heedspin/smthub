@@ -28,7 +28,7 @@ app_config:
     otd_grace_period_days: 1
     otd_lead_time: 0
     enable_events: false
-    enable_opportunities: false
+    feature_opportunities: false
     feature_inspection_tasks: false
     
   development:

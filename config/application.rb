@@ -51,14 +51,16 @@ module Smthub
     # config.active_record.whitelist_attributes = true
 
     # Enable the asset pipeline
-    config.assets.enabled = false
+    config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.assets.precompile += ['application_classic.css', 'application_classic.js', 'jquery.popupWindow.js']
+
     config.colorize_logging = false
     
-    config.action_view.javascript_expansions[:defaults] = %w(m2mhub/jquery.min m2mhub/jquery-ui-1.8.6.custom.min m2mhub/application m2mhub/jquery_ujs m2mhub/jquery.form)
+    # config.action_view.javascript_expansions[:defaults] = %w(m2mhub/jquery.min m2mhub/jquery-ui-1.8.6.custom.min m2mhub/application m2mhub/jquery_ujs m2mhub/jquery.form)
   end
 end
 

@@ -1,18 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'formtastic', '2.0.2'
-gem "airbrake", '3.0.9'
-gem 'delayed_job_active_record', '~> 0.3.2'
-gem 'active_hash', '0.9.9'
-gem 'authlogic', '3.1.0'
-gem 'will_paginate', '~> 3.0.3'
-gem 'paperclip', '~> 2.7.0'
-gem 'aws-sdk', '~> 1.3.4'
-gem 'acts_as_list', '~> 0.1.6'
-gem 'declarative_authorization', '~> 0.5.5'
+gem 'formtastic', '2.2.1'
+gem "airbrake"
+gem 'delayed_job_active_record', '~> 0.4.4'
+gem 'authlogic', '3.3.0'
+gem 'will_paginate', '~> 3.0.4'
+gem 'paperclip', '~> 2.7.5'
+# gem 'aws-sdk', '~> 1.8.0'
+# gem 'acts_as_list', '~> 0.1.6'
+# gem 'declarative_authorization', '~> 0.5.5'
 gem 'ruby_parser' # for declarative_authorization
 gem 'nokogiri', '1.5.4' # so it doesn't autoupdate
 gem 'hominid' # for mailchimper in plutolib
+gem 'trollop', '2.0' # Command-line parser.
+gem 'json'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
   
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
@@ -29,7 +33,7 @@ end
 group :database do
   gem 'mysql', '2.8.1'
   gem 'tiny_tds', '0.5.1'
-  gem 'activerecord-sqlserver-adapter', '3.1.5' # '3.2.0'
+  gem 'activerecord-sqlserver-adapter', '3.2.10'
 end
 
 group :development do
