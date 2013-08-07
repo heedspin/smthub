@@ -16,16 +16,7 @@ gem 'trollop', '2.0' # Command-line parser.
 gem 'json'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'useragent' 
   
-if File.exists?('../doogle')
-  gem 'doogle', :path => '../doogle'
-elsif File.exists?('../../Dropbox/p/doogle')
-  gem 'doogle', :path => '../../Dropbox/p/doogle'
-elsif Dir.getwd.include?('lxd')
-  gem 'doogle', :git => 'git@github.com:heedspin/doogle.git'
-end
-
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
 else
@@ -36,6 +27,10 @@ if File.exists?('../plutolib')
   gem 'plutolib', :path => '../plutolib'
 else
   gem 'plutolib', :git => 'git@github.com:heedspin/plutolib.git'
+end
+
+group :assets do
+  gem 'uglifier',     ">= 1.0.3"
 end
 
 group :database do
