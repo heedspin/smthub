@@ -18,6 +18,14 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'useragent' 
   
+if File.exists?('../doogle')
+  gem 'doogle', :path => '../doogle'
+elsif File.exists?('../../Dropbox/p/doogle')
+  gem 'doogle', :path => '../../Dropbox/p/doogle'
+elsif Dir.getwd.include?('lxd')
+  gem 'doogle', :git => 'git@github.com:heedspin/doogle.git'
+end
+
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
 else
