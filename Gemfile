@@ -16,7 +16,8 @@ gem 'trollop', '2.0' # Command-line parser.
 gem 'json'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-  
+gem 'active_hash', '~> 1.0.0'
+
 if File.exists?('../m2mhub')
   gem 'm2mhub', :path => '../m2mhub'
 else
