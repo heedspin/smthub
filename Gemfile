@@ -18,8 +18,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'active_hash', '~> 1.0.0'
 
-if File.exists?('../m2mhub')
-  gem 'm2mhub', :path => '../m2mhub'
+if File.exists?('../smt_m2mhub')
+  gem 'm2mhub', :path => '../smt_m2mhub'
 else
   gem 'm2mhub', :git => 'git@github.com:heedspin/m2mhub.git'
 end
