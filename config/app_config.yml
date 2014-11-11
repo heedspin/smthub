@@ -30,6 +30,8 @@ app_config:
     enable_events: false
     feature_opportunities: false
     feature_inspection_tasks: false
+    default_report_directory: /home/tim/Dropbox/lxd_server_temp
+    wip_report_ignore_jobs: IB533-0000
     
   development:
     <<: *shared
