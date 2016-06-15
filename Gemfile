@@ -37,7 +37,7 @@ elsif Dir.getwd.include?('lxd')
 end
 
 if File.exists?('../lxd_m2mhub')
-  gem 'm2mhub', :path => '../lxd_m2mhub'
+  gem 'm2mhub', :path => '../smt_m2mhub'
 else
   gem 'm2mhub', :git => 'git@github.com:heedspin/m2mhub.git'
 end

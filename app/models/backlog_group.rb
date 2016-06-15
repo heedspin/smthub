@@ -8,6 +8,6 @@ class BacklogGroup < ActiveHash::Base
   include Plutolib::ActiveHashMethods
 
   def filter_release?(release)
-    !self.product_class_keys.include?(release.item.item.product_class_key)
+    !self.product_class_keys.include?(release.item.item.try(:product_class_key))
   end
 end
