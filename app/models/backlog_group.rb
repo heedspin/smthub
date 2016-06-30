@@ -1,3 +1,4 @@
+require 'active_hash'
 require 'plutolib/active_hash_methods'
 class BacklogGroup < ActiveHash::Base
   self.data = [
