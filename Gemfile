@@ -7,7 +7,7 @@ gem 'rack-cache', '1.2'
 gem 'rake', '10.4.2'
 
 gem 'formtastic', '2.2.1'
-gem "airbrake", '4.1.0'
+# gem "airbrake", '4.1.0'
 gem 'delayed_job_active_record', '~> 0.4.4'
 gem 'lighthouse-api', :git => 'https://github.com/tongueroo/lighthouse-api.git'
 # gem 'active_hash', '0.9.9'
